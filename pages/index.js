@@ -70,10 +70,10 @@ export default function Home() {
     return (
         <>
             <p>
-                the query: {query}
+                현재 입력한 값: {query}
             </p>
             <p>
-                the eng param: {engBookParam}
+                영어성경 이름: {engBookParam}
             </p>
             <Example setEngBookParam = {setEngBookParam} setQuery={setQuery} />
             <button onClick={getBibleVerses}>search!</button>
