@@ -76,7 +76,7 @@ export default class Example extends React.Component {
 
         // Autosuggest will pass through all these props to the input.
         const inputProps = {
-            placeholder: 'Type a programming language',
+            placeholder: '초성을 넣어보세요! (예: ㅁㅅㄱ)',
             value,
             onChange: this.onChange
         };
@@ -90,6 +90,7 @@ export default class Example extends React.Component {
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
+
             />
         );
     }
