@@ -194,5 +194,139 @@ const languages = [
         long: '말라기',
         eng: 'Malachi'
     },
+    {
+        short: 'ㅁㅌㅂㅇ',
+        long: '마태복음',
+        eng: 'Matthew',
+    },
+    {
+        short: 'ㅁㄱㅂㅇ',
+        long: '마가복음',
+        eng: 'Mark',
+    },
+    {
+        short: 'ㄴㄱㅂㅇ',
+        long: '누가복음',
+        eng: 'Luke',
+    },
+    {
+        short: 'ㅇㅎㅂㅇ',
+        long: '요한복음',
+        eng: 'John',
+    },
+    {
+        short: 'ㅅㄷㅎㅈ',
+        long: '사도행전',
+        eng: 'Acts',
+    },
+    {
+        short: 'ㄹㅁㅅ',
+        long: '로마서',
+        eng: 'Romans',
+    },
+    {
+        short: 'ㄱㄹㄷㅈㅅ',
+        long: '고린도전서',
+        eng: '1Corinthians',
+    },
+    {
+        short: 'ㄱㄹㄷㅎㅅ',
+        long: '고린도후서',
+        eng: '2Corinthians',
+    },
+    {
+        short: 'ㄱㄹㄷㅇㅅ',
+        long: '갈라디아서',
+        eng: 'Galatinas',
+    },
+    {
+        short: 'ㅇㅂㅅㅅ',
+        long: '에베소서',
+        eng: 'Ephesians',
+    },
+    {
+        short: 'ㅂㄹㅂㅅ',
+        long: '빌립보서',
+        eng: 'Philippians',
+    },
+    {
+        short: 'ㄱㄹㅅㅅ',
+        long: '골로새서',
+        eng: 'Colossians',
+    },
+    {
+        short: 'ㄷㅅㄹㄴㄱㅈㅅ',
+        long: '데살로니가전서',
+        eng: '1Thessalonians',
+    },
+    {
+        short: 'ㄷㅅㄹㄴㄱㅎㅅ',
+        long: '데살로니가후서',
+        eng: '2Thessalonians',
+    },
+    {
+        short: 'ㄷㅁㄷㅈㅅ',
+        long: '디모데전서',
+        eng: '1Timothy',
+    },
+    {
+        short: 'ㄷㅁㄷㅎㅅ',
+        long: '디모데후서',
+        eng: '2Timothy',
+    },
+    {
+        short: 'ㄷㄷㅅ',
+        long: '디도서',
+        eng: 'Titus',
+    },
+    {
+        short: 'ㅂㄹㅁㅅ',
+        long: '빌레몬서',
+        eng: 'Philemon',
+    },
+    {
+        short: 'ㅎㅂㄹㅅ',
+        long: '히브리서',
+        eng: 'Hebrews',
+    },
+    {
+        short: 'ㅇㄱㅂㅅ',
+        long: '야고보서',
+        eng: 'James',
+    },
+    {
+        short: 'ㅂㄷㄹㅈㅅ',
+        long: '베드로전서',
+        eng: '1Peter',
+    },
+    {
+        short: 'ㅂㄷㄹㅎㅅ',
+        long: '베드로후서',
+        eng: '2Peter',
+    },{
+        short: 'ㅇㅎ1ㅅ',
+        long: '요한1서',
+        eng: '1John',
+    },
+    {
+        short: 'ㅇㅎ2ㅅ',
+        long: '요한2서',
+        eng: '2John',
+    },
+    {
+        short: 'ㅇㅎ3ㅅ',
+        long: '요한3서',
+        eng: '3John',
+    },
+    {
+        short: 'ㅇㄷㅅ',
+        long: '유다서',
+        eng: 'Jude',
+    },
+    {
+        short: 'ㅇㅎㄱㅅㄹ',
+        long: '요한계시록',
+        eng: 'Revelation',
+    },
 ];
 export default languages

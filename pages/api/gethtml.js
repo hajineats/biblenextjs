@@ -9,11 +9,21 @@ export default async (req, res) => {
         query: { version, book, verses },
     } = req;
 
+
+
     // const a = await somePromise()
-    const url = `https://ibibles.net/quote.php?${version}-${book}/${verses}`;
+    const url = `https://ibibles.net/quote.php?niv-${book}/${verses}`;
     const fetchData = await fetch(url, {mode: 'no-cors'});
     const $ = cheerio.load(await fetchData.text());
-    const html = $('body').html();
+    const engHtml = $('body').html();
 
-    return res.send(html)
+    //kor
+    const url2 = `https://ibibles.net/quote.php?${version}-${book}/${verses}`;
+    const fetchData2 = await fetch(url2, {mode: 'no-cors'});
+    const $2 = cheerio.load(await fetchData2.text());
+    const korHtml = $2('body').html();
+
+    const resultHtml = korHtml + engHtml
+
+    return res.send(resultHtml)
 }
