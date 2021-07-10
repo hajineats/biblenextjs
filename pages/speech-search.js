@@ -3,7 +3,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import axios from "axios";
 import languages from "../data";
 import {Button, Paper, Typography} from "@material-ui/core";
-
+import Link from 'next/link'
 const cleanseHtml = (html)=>{
     html = html.replaceAll("<small>", "")
     html = html.replaceAll("</small>", "")
@@ -24,7 +24,7 @@ const Dictaphone = () => {
     const [query, setQuery] = useState("");
     const [bibleText, setBibleText] = useState("");
     const [queryBookParam, setQueryBookParam] = useState("");
-    const [showTranscription, setShowTranscription] = useState(true);
+    const [showTranscription, setShowTranscription] = useState(false);
     // const [queryChapParam, setQueryChapParam] = useState("");
     // const [queryVerseParam, setQueryVerseParam] = useState("")
 
@@ -57,11 +57,21 @@ const Dictaphone = () => {
             const bookTitle = queryList[0]
             const bookChapter = takeNumbersOnly(queryList[1])
             const bookVerse = takeNumbersOnly(queryList[2])
-            languages.filter(b=> b.long == bookTitle).forEach(b=>setQueryBookParam(b.eng))
+            console.log("book title", bookTitle)
+
+            let englishBookName = ""
+            for(let i = 0; i<languages.length; i++){
+                if(languages[i].long == bookTitle){
+                    englishBookName = languages[i].eng
+                    break;
+                }
+            }
+
             let parseResult = {
                 version: 'kor',
-                book: queryBookParam,
+                book: englishBookName,
             }
+            console.log(parseResult)
 
             if(queryList.length == 4){
                 //expected format: 요한복음 3장 16절 ('4' means 3 stuff)
@@ -135,6 +145,9 @@ const Dictaphone = () => {
         <div>
             <Typography variant="body1">
                 <strong>음성으로 검색하세요! (현재는 한국어만 지원) </strong>
+                <span onClick={bibleEndListen}>
+                    <Link href='/'>뒤로가기</Link>
+                </span>
                 <p>
                     예시1: '시작 요한복음 3장 16절 끝' => 요한복음 3장 16절
                 </p>
@@ -143,9 +156,7 @@ const Dictaphone = () => {
                 </p>
             </Typography>
             <hr/>
-            <Typography variant="body1">
-                {listening ? '마이크가 켜져있습니다' : '마이크가 꺼져있습니다'}
-            </Typography>
+
             <Button variant="contained" color="primary" onClick={bibleStartListen}>Start</Button>
             <Button variant="contained" color="secondary" onClick={bibleEndListen}>Stop</Button>
             <Button variant="contained" color="secondary" onClick={()=>{
@@ -167,21 +178,9 @@ const Dictaphone = () => {
             }}>도움말</Button>
             <br/>
 
-            <button onClick={
-                ()=>setShowTranscription(!showTranscription)
-            }>{showTranscription?'Transcript 숨기기':'Transcript 열기'}</button>
-            {showTranscription?<Paper>
-                <p>이 세션동안 인식된 말: </p>
-                <p>
-                    {transcript}
-                </p>
-
-                <button onClick={resetTranscript}>reset transcript</button>
-
-            </Paper>:<div></div>}
-
+            <br/>
             <Typography variant="body1">
-                가장 최근 인식된 ('시작'과 '끝'으로 감싸진) 요청: {query}
+                가장 최근 인식된 ('시작'과 '끝'으로 감싸진)된 요청: {query}
             </Typography>
 
             <Paper>
@@ -190,9 +189,28 @@ const Dictaphone = () => {
                 </Typography>
             </Paper>
 
+            <br/>
+            <br/>
+            <Button onClick={
+                ()=>setShowTranscription(!showTranscription)
+            }>{showTranscription?'Transcript 숨기기':'Transcript 열기'}</Button>
+
+            {showTranscription?<Paper>
+                <Typography variant="body1">
+                    <strong>{listening ? '마이크가 켜져있습니다' : '마이크가 꺼져있습니다'}</strong>
+                </Typography>
+                <p>이 세션동안 인식된 말: </p>
+                <p>
+                    {transcript}
+                </p>
+
+                <Button onClick={resetTranscript}>reset transcript</Button>
+
+            </Paper>:<div></div>}
+
 
 
         </div>
     );
-};
+}
 export default Dictaphone;

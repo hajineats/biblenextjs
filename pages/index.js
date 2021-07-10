@@ -144,6 +144,10 @@ export default function Home() {
                 <Link href="/dual-search">
                     듀얼검색 바로가기
                 </Link>
+                <br/>
+                <Link href="/speech-search">
+                    음성검색 바로가기
+                </Link>
             </Typography>
 
 
