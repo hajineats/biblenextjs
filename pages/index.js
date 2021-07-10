@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Example from "../component/autosuggest";
+import Link from "next/link";
 import {Button, Paper, Typography} from "@material-ui/core";
 const cleanseHtml = (html)=>{
     html = html.replaceAll("<small>", "")
@@ -49,7 +50,7 @@ export default function Home() {
 입력 예시 - 민수기 1장 1절:
 민수기 1 1
 
-현재 한국어 & 구약만 지원
+현재 한국어 검색 / 한국어 초성 자동제안 / 구약신약 영어&한국어 성경 지원
 `)
     }
 
@@ -105,6 +106,9 @@ export default function Home() {
 
     return (
         <>
+            <Typography>
+                <strong>간단검색: 설명은 도움말을 참조해주세요</strong>
+            </Typography>
             <Paper>
                 <Typography variant='body2'>
                     {checkQueriable()
@@ -129,6 +133,19 @@ export default function Home() {
             <Button variant="contained" color="secondary" onClick={getDetails}>
                 현재 기능들
             </Button>
+
+            <br/>
+            <br/>
+            <hr/>
+            <Typography variant="body1">
+                실험실 기능:
+            </Typography>
+            <Typography>
+                <Link href="/dual-search">
+                    듀얼검색 바로가기
+                </Link>
+            </Typography>
+
 
 
         </>

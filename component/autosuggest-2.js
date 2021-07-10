@@ -1,21 +1,6 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest'
-
-// Imagine you have a list of languages that you'd like to autosuggest.
-const languages = [
-    {
-        name: 'ㅁㅌㅂㅇ',
-        year: '마태복음',
-        short: 'ㅁㅌㅂㅇ',
-        long: '마태복음'
-    },
-    {
-        name: 'ㅁㄱㅂㅇ',
-        year: '마가복음',
-        short: 'ㅁㄱㅂㅇ',
-        long: '마가복음',
-    },
-];
+import languages from "../data";
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
@@ -39,8 +24,8 @@ const renderSuggestion = suggestion => (
 );
 
 export default class Example extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         // Autosuggest is a controlled component.
         // This means that you need to provide an input value
@@ -51,13 +36,24 @@ export default class Example extends React.Component {
             value: '',
             suggestions: []
         };
+
+        this.setQuery= props.setQuery.bind(this)
+        this.setEngBookParam= props.setEngBookParam.bind(this)
     }
 
     onChange = (event, { newValue }) => {
+        this.setQuery(newValue)
+        languages.filter(e=>e.long===newValue).forEach(e=>{
+            this.setEngBookParam(e.eng)
+        })
+
+
         this.setState({
             value: newValue
         });
     };
+
+    //바꿀필요 없음 -------------------------------------
 
     // Autosuggest will call this function every time you need to update suggestions.
     // You already implemented this logic above, so just use it.
@@ -73,13 +69,14 @@ export default class Example extends React.Component {
             suggestions: []
         });
     };
+    //-----------------------------------------------
 
     render() {
         const { value, suggestions } = this.state;
 
         // Autosuggest will pass through all these props to the input.
         const inputProps = {
-            placeholder: 'Type a programming language',
+            placeholder: '초성을 넣어보세요! (예: ㅁㅅㄱ)',
             value,
             onChange: this.onChange
         };
@@ -93,6 +90,7 @@ export default class Example extends React.Component {
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
+
             />
         );
     }
