@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+You can do dual search and voice search (on chrome/android). Hosted on: https://bible-next-js.herokuapp.com
